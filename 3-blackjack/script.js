@@ -161,6 +161,7 @@ var main = function (input) {
     console.log('Computer Card', compCard);
 
   } else
+
     return `Please enter either 'hit' or 'stand' for your next move.`;
   };
 

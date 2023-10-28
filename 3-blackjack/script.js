@@ -119,11 +119,12 @@ var main = function (input) {
     } else if (playerCardSum == 21) {
       currentGameMode = 'Game over';
       return `You got blackjack, you win!`;
-    } else
-    currentGameMode = 'Player move';
-    return `Your cards are: ${pprintCardArray(playerCard)}, summing to ${playerCardSum}. <br>
-    The computer's cards are ${pprintCardArray(compCard)}, summing to ${compCardSum}. <br>
-    Enter 'hit' or 'stand' to make your next move.`;
+    } else {
+      currentGameMode = 'Player move';
+      return `Your cards are: ${pprintCardArray(playerCard)}, summing to ${playerCardSum}. <br>
+      The computer's cards are ${pprintCardArray(compCard)}, summing to ${compCardSum}. <br>
+      Enter 'hit' or 'stand' to make your next move.`;
+    }
   };
 
   // Player Hit
@@ -148,6 +149,8 @@ var main = function (input) {
         The computer's cards are ${pprintCardArray(compCard)}, summing to ${compCardSum}. <br>
         You cannot hit another card with your current sum. <br>
         Please enter 'stand' to continue the game.`;
+      } else {
+        return `Have we programmed this scenario?`;
       };
     };
 
@@ -160,6 +163,7 @@ var main = function (input) {
       };
       console.log('Player Card', playerCard);
       console.log('Computer Card', compCard);
+      currentGameMode = 'conclude game';
 
     } else {
       return `Please enter either 'hit' or 'stand' for your next move.`;
@@ -168,6 +172,7 @@ var main = function (input) {
 
   // Tie/Win/Lose Condition
 
+  if (currentGameMode == 'conclude game') {
     if (playerCardSum == compCardSum) {
       return `Your cards are ${pprintCardArray(playerCard)}, summing to ${playerCardSum}. <br>
       The computer's cards are ${pprintCardArray(compCard)}, summing to ${compCardSum}. <br>
@@ -182,7 +187,11 @@ var main = function (input) {
       return `Your cards are ${pprintCardArray(playerCard)}, summing to ${playerCardSum}. <br>
       The computer's cards are ${pprintCardArray(compCard)}, summing to ${compCardSum}. <br>
       You lose!`;
-
+    } else {
+      return `Your cards are ${pprintCardArray(playerCard)}, summing to ${playerCardSum}. <br>
+      The computer's cards are ${pprintCardArray(compCard)}, summing to ${compCardSum}. <br>
+      We have not programmed this condition yet haha!`;
+    }
       // more than 21 lose
-    };
+  };
 };

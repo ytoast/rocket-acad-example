@@ -1,6 +1,8 @@
 var currentGameMode = 'First deal';
 var playerCard = [];
 var compCard = [];
+var playerCardSum;
+var compCardSum;
 
 // Creating Card Deck
 var makeDeck = function () {
@@ -100,8 +102,6 @@ var main = function (input) {
   // Creating Shuffled Deck
   var cardDeck = makeDeck();
   var shuffledDeck = shuffleDeck(cardDeck);
-  var playerCardSum;
-  var compCardSum;
   console.log('Shuffled Deck', shuffledDeck);
 
   // First Deal
@@ -129,6 +129,7 @@ var main = function (input) {
   // Player Hit
   if (currentGameMode == 'Player move') {
     while (input === 'hit') {
+      console.log('hit');
 
       // Player only can hit if less than 21
       if (playerCardSum < 21) {

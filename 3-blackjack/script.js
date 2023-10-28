@@ -105,7 +105,7 @@ var main = function (input) {
   console.log('Shuffled Deck', shuffledDeck);
 
   // First Deal
-  if (currentGameMode == 'First deal'){
+  if (currentGameMode == 'First deal') {
     playerCard = [shuffledDeck.pop(), shuffledDeck.pop()];
     playerCardSum = cardScore(playerCard);
     compCard = [shuffledDeck.pop(), shuffledDeck.pop()];
@@ -151,22 +151,23 @@ var main = function (input) {
       };
     };
 
-  // Player Stand
-   if (input === 'stand') {
-    // Hit if Computer < 17, assume cannot hit if > 17
-    while (compCardSum < 17) {
-      compCard.push(shuffledDeck.pop());
-      compCardSum = cardScore(compCard);
-    };
-    console.log('Player Card', playerCard);
-    console.log('Computer Card', compCard);
+    // Player Stand
+    if (input === 'stand') {
+      // Hit if Computer < 17, assume cannot hit if > 17
+      while (compCardSum < 17) {
+        compCard.push(shuffledDeck.pop());
+        compCardSum = cardScore(compCard);
+      };
+      console.log('Player Card', playerCard);
+      console.log('Computer Card', compCard);
 
-  } else
-
-    return `Please enter either 'hit' or 'stand' for your next move.`;
+    } else {
+      return `Please enter either 'hit' or 'stand' for your next move.`;
+    }
   };
 
-    // Tie/Win/Lose Condition
+  // Tie/Win/Lose Condition
+
     if (playerCardSum == compCardSum) {
       return `Your cards are ${pprintCardArray(playerCard)}, summing to ${playerCardSum}. <br>
       The computer's cards are ${pprintCardArray(compCard)}, summing to ${compCardSum}. <br>

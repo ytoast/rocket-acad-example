@@ -88,6 +88,13 @@ var cardScore = function (currentDeck) {
   return score;
 };
 
+var pprintCardArray = function(cardArray) {
+  // Convert card array to string (pretty print array to human readable string)
+  // e.g. [{name: 'Ace', suit: 'Spades'}, {name: 'King', suit: 'Diamonds'}]
+  // to 'Ace of Spades, King of Diamonds'
+  return cardArray.map(card => card.name + ' of ' + card.suit);
+}
+
 var main = function (input) {
 
   // Creating Shuffled Deck
@@ -114,8 +121,8 @@ var main = function (input) {
       return `You got blackjack, you win!`;
     } else
     currentGameMode = 'Player move';
-    return `Your cards are: ${playerCard}, summing to ${playerCardSum}. <br>
-    The computer's cards are ${compCard}, summing to ${compCardSum}. <br>
+    return `Your cards are: ${pprintCardArray(playerCard)}, summing to ${playerCardSum}. <br>
+    The computer's cards are ${pprintCardArray(compCard)}, summing to ${compCardSum}. <br>
     Enter 'hit' or 'stand' to make your next move.`;
   };
 
@@ -129,15 +136,15 @@ var main = function (input) {
         playerCardSum = cardScore(playerCard);
         console.log('Player Card', playerCard);
         console.log('Computer Card', compCard);
-        return `Your cards are ${playerCard}, summing to ${playerCardSum}. <br>
-        The computer's cards are ${compCard}, summing to ${compCardSum}. <br>
+        return `Your cards are: ${pprintCardArray(playerCard)}, summing to ${playerCardSum}. <br>
+        The computer's cards are ${pprintCardArray(compCard)}, summing to ${compCardSum}. <br>
         Enter 'hit' or 'stand' to make your next move.`;
 
       // Score above 21, check if there are Aces
       } else if (playerCardSum => 21) {
 
-        return `Your cards are ${playerCard}, summing to ${playerCardSum}. <br>
-        The computer's cards are ${compCard}, summing to ${compCardSum}. <br>
+        return `Your cards are: ${pprintCardArray(playerCard)}, summing to ${playerCardSum}. <br>
+        The computer's cards are ${pprintCardArray(compCard)}, summing to ${compCardSum}. <br>
         You cannot hit another card with your current sum. <br>
         Please enter 'stand' to continue the game.`;
       };
@@ -159,18 +166,18 @@ var main = function (input) {
 
     // Tie/Win/Lose Condition
     if (playerCardSum == compCardSum) {
-      return `Your cards are ${playerCard}, summing to ${playerCardSum}. <br>
-      The computer's cards are ${compCard}, summing to ${compCardSum}. <br>
+      return `Your cards are ${pprintCardArray(playerCard)}, summing to ${playerCardSum}. <br>
+      The computer's cards are ${pprintCardArray(compCard)}, summing to ${compCardSum}. <br>
       It's a draw!`;
 
     } else if (playerCardSum <= 21 && playerCardSum > compCardSum) {
-      return `Your cards are ${playerCard}, summing to ${playerCardSum}. <br>
-      The computer's cards are ${compCard}, summing to ${compCardSum}. <br>
+      return `Your cards are ${pprintCardArray(playerCard)}, summing to ${playerCardSum}. <br>
+      The computer's cards are ${pprintCardArray(compCard)}, summing to ${compCardSum}. <br>
       You win!`;
 
     } else if (playerCardSum <= 21 && playerCardSum < compCardSum) {
-      return `Your cards are ${playerCard}, summing to ${playerCardSum}. <br>
-      The computer's cards are ${compCard}, summing to ${compCardSum}. <br>
+      return `Your cards are ${pprintCardArray(playerCard)}, summing to ${playerCardSum}. <br>
+      The computer's cards are ${pprintCardArray(compCard)}, summing to ${compCardSum}. <br>
       You lose!`;
 
       // more than 21 lose
